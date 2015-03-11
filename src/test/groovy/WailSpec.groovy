@@ -40,4 +40,11 @@ class WailSpec extends Specification {
             violations.size() == 1
     }
 
+    def "message can be set to null, will still not validate, but possible"(){
+        when:
+            wail.setMessage(null)
+        then:
+            notThrown(NullPointerException)
+    }
+
 }
