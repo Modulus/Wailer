@@ -1,7 +1,7 @@
 package com.subblesnask.types;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.dropwizard.validation.MaxSize;
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.NotNull;
@@ -26,7 +26,7 @@ public class Wail {
 
     @NotNull
     @NotEmpty
-    @MaxSize(value = 255)
+    @Length(max = 255)
     private String message;
 
     @JsonProperty
