@@ -1,8 +1,8 @@
 database:
   driverClass: org.postgresql.Driver
-  user: wailer
-  password: missing_complaint
-  url: jdbc:postgresql://localhost/wailings
+  user: ${DB_USER}
+  password: ${DB_PASSWORD}
+  url: ${DB_URL}
 
   # any properties specific to your JDBC driver:
     properties:
