@@ -26,7 +26,7 @@ public class Wail {
 
     @NotNull
     @NotEmpty
-    @Length(max = 255)
+    @Length(max = 255, min = 15)
     private String message;
 
     @JsonProperty
