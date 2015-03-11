@@ -21,6 +21,9 @@ public class Wail {
         this.date = LocalDate.now();
     }
 
+    @Length(max = 50)
+    private String pseudonym;
+
     @NotNull
     private LocalDate date;
 
@@ -45,5 +48,14 @@ public class Wail {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    @JsonProperty
+    public String getPseudonym() {
+        return pseudonym;
+    }
+
+    public void setPseudonym(String pseudonym) {
+        this.pseudonym = pseudonym;
     }
 }

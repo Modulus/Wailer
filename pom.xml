@@ -26,6 +26,14 @@
             <artifactId>spock-core</artifactId>
             <version>${spock.version}</version>
         </dependency>
+        <!--Fixture helper-->
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-testing</artifactId>
+            <version>${dropwizard.version}</version>
+        </dependency>
+
+
         <dependency> <!-- enables mocking of classes (in addition to interfaces) -->
             <groupId>cglib</groupId>
             <artifactId>cglib-nodep</artifactId>
