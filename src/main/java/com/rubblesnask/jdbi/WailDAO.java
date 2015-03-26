@@ -1,8 +1,10 @@
 package com.rubblesnask.jdbi;
 
+import com.subblesnask.types.Wail;
 import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
+import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.List;
 /**
  * Created by Modulus on 26.03.2015.
  */
+@RegisterMapper(WailMapper.class)
 public interface WailDAO {
 
     @SqlUpdate("create table wails (id int primary key not null, name varchar(255), message text not null, timestamp timestamp not null, is_offensive boolean default false)")
@@ -20,7 +23,7 @@ public interface WailDAO {
     void insert(@Bind("id")int id, @Bind("name")String name, @Bind("message")String message, @Bind("timestamp")LocalDate timestamp);
 
     @SqlQuery("select message from wails where id = :id")
-    WailDAO findWailById(@Bind("id")int id);
+    Wail findWailById(@Bind("id")int id);
 
     List<WailDAO> findAll();
 }
