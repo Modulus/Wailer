@@ -1,5 +1,6 @@
 package com.subblesnask.types;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -20,6 +21,9 @@ public class Wail {
         this.message = message;
         this.date = LocalDate.now();
     }
+
+    @NotNull
+    private Integer id;
 
     @Length(max = 50)
     private String pseudonym;
@@ -57,5 +61,14 @@ public class Wail {
 
     public void setPseudonym(String pseudonym) {
         this.pseudonym = pseudonym;
+    }
+
+    @JsonIgnore
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
