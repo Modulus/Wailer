@@ -7,6 +7,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * Created by Modulus on 11.03.2015.
@@ -14,12 +15,12 @@ import java.time.LocalDate;
 public class Wail {
 
     public Wail() {
-        date = LocalDate.now();
+        date = LocalDateTime.now();
     }
 
     public Wail(String message){
         this.message = message;
-        this.date = LocalDate.now();
+        this.date = LocalDateTime.now();
     }
 
     @NotNull
@@ -29,7 +30,7 @@ public class Wail {
     private String pseudonym;
 
     @NotNull
-    private LocalDate date;
+    private LocalDateTime date;
 
     @NotNull
     @NotEmpty
@@ -37,11 +38,11 @@ public class Wail {
     private String message;
 
     @JsonProperty
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
@@ -70,5 +71,16 @@ public class Wail {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    @JsonIgnore
+    @Override
+    public String toString() {
+        return "Wail{" +
+                "id=" + id +
+                ", pseudonym='" + pseudonym + '\'' +
+                ", date=" + date +
+                ", message='" + message + '\'' +
+                '}';
     }
 }
