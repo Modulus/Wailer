@@ -14,7 +14,9 @@ CREATE TABLE wails(id SERIAL PRIMARY KEY NOT NULL,
 	name VARCHAR(125),
 	message TEXT NOT NULL,
 	timestamp TIMESTAMP NOT NULL,
-	offensive boolean default false);
+	offensive boolean default false,
+	upvotes int DEFAULT 0,
+	downvotes int DEFAULT 0);
 
 /*CREATE TABLE wails(id INT PRIMARY KEY NOT NULL,
 			wail_id INT REFERENCES wail(id));*/

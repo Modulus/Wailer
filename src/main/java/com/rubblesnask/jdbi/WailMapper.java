@@ -20,14 +20,18 @@ public class WailMapper implements ResultSetMapper<Wail> {
     public Wail map(int i, ResultSet resultSet, StatementContext statementContext) throws SQLException {
         LOGGER.warn("Mapping wail");
         Wail wail = new Wail();
-        Integer id = resultSet.getInt("id");
+        int id = resultSet.getInt("id");
         String message = resultSet.getString("message");
         String name = resultSet.getString("name");
+        Integer upVotes = resultSet.getInt("upvotes");
+        int downVotes = resultSet.getInt("downvotes");
         LocalDateTime date = resultSet.getTimestamp("timestamp").toLocalDateTime();
 
         wail.setId(id);
         wail.setMessage(message);
         wail.setDate(date);
+        wail.setUpVotes(upVotes);
+        wail.setDownVotes(downVotes);
         wail.setPseudonym(name);
 
         LOGGER.warn("Finished mapping wail");

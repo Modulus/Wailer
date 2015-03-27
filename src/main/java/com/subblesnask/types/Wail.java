@@ -67,7 +67,6 @@ public class Wail {
         this.pseudonym = pseudonym;
     }
 
-    @JsonIgnore
     public Integer getId() {
         return id;
     }
@@ -104,5 +103,13 @@ public class Wail {
                 ", date=" + date +
                 ", message='" + message + '\'' +
                 '}';
+    }
+
+    public void increaseUpVotes() {
+        this.upVotes += 1;
+    }
+
+    public void increateDownVotes(){
+        this.downVotes += 1;
     }
 }
