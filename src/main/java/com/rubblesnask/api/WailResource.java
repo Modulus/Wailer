@@ -6,6 +6,7 @@ import com.subblesnask.types.Wail;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.Response;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -42,13 +43,13 @@ public class WailResource {
 
         @Path("wail")
         @POST
-        @Consumes(value = {MediaType.APPLICATION_FORM_URLENCODED})
-        public void insert(MultivaluedMap<String,String> multivaluedMap){
+        @Consumes(value = {MediaType.APPLICATION_JSON})
+        @Produces(MediaType.APPLICATION_JSON)
+        public Response insert(Wail wail){
 
-            String name = multivaluedMap.getFirst("name");
-            String message = multivaluedMap.getFirst("message");
             Timestamp time = new Timestamp(System.currentTimeMillis());
-            wailDAO.insert(name, message, time);
+            wailDAO.insert(wail.getPseudonym(), wail.getMessage(), time);
+            return Response.ok().build();
         }
 
 

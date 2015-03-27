@@ -37,7 +37,10 @@ public class Wail {
     @Length(max = 255, min = 15)
     private String message;
 
-    @JsonProperty
+    private int upVotes;
+    private int downVotes;
+
+    @JsonProperty("timestamp")
     public LocalDateTime getDate() {
         return date;
     }
@@ -46,7 +49,7 @@ public class Wail {
         this.date = date;
     }
 
-    @JsonProperty
+    @JsonProperty("text")
     public String getMessage() {
         return message;
     }
@@ -55,7 +58,7 @@ public class Wail {
         this.message = message;
     }
 
-    @JsonProperty
+    @JsonProperty("name")
     public String getPseudonym() {
         return pseudonym;
     }
@@ -71,6 +74,25 @@ public class Wail {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+
+    @JsonProperty
+    public int getUpVotes() {
+        return upVotes;
+    }
+
+    public void setUpVotes(int upVotes) {
+        this.upVotes = upVotes;
+    }
+
+    @JsonProperty
+    public int getDownVotes() {
+        return downVotes;
+    }
+
+    public void setDownVotes(int downVotes) {
+        this.downVotes = downVotes;
     }
 
     @JsonIgnore
