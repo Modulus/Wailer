@@ -23,7 +23,7 @@ CREATE TABLE wails(id INT PRIMARY KEY NOT NULL,
 create table users(id int primary key not null,
 	username varchar(125) not null,
 	password char(60) not null,
-	role char(25),
+	role char(25)
 	);
 
 alter table users
