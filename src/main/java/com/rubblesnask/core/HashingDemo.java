@@ -26,7 +26,7 @@ public class HashingDemo {
         } catch (InvalidKeySpecException e) {
             e.printStackTrace();
         }
-
+        return null;
     }
 
     public static String createSalt()  {
@@ -38,6 +38,7 @@ public class HashingDemo {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
+        return null;
     }
 
     private static String toHex(byte[] array) throws NoSuchAlgorithmException
