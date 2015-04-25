@@ -27,22 +27,22 @@ class WailSpec extends Specification {
         and: this.wail.date != null
     }
 
-    def "empty message gives two violations"(){
+    def "empty message gives three violations"(){
         when:
         wail.setMessage("")
         then:
         def violations = validator.validate(wail)
-        violations.size() == 2
+        violations.size() == 3
     }
 
-    def "message is less than required length, gives validation error"(){
+    def "message is less than required length, gives validation errors"(){
         given:
             wail = new Wail()
         when:
             wail.setMessage("to short")
         then:
             def violations = this.validator.validate(wail)
-            violations.size() == 1
+            violations.size() == 2
     }
 
     def "message is larger than max required length, gives validation error"(){
@@ -50,7 +50,7 @@ class WailSpec extends Specification {
             wail.setMessage("Gibberish"*200)
         then: "Validation fails"
             def violations = validator.validate(wail)
-            violations.size() == 1
+            violations.size() == 2
     }
 
     def "message can be set to null, will still not validate, but possible"(){
@@ -69,8 +69,8 @@ class WailSpec extends Specification {
             size == violations.size()
         where:
             message     |   name    || size
-            "to"*200    | "long"*40 || 2
-            ""          | "JohnDoe" || 2
+            "to"*200    | "long"*40 || 3
+            ""          | "JohnDoe" || 3
     }
 
     @Ignore
