@@ -1,11 +1,10 @@
 import com.fasterxml.jackson.core.JsonFactory
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.subblesnask.types.Wail
-import spock.lang.Ignore
 import spock.lang.Specification
 
 import javax.validation.Validation
-import java.time.LocalDate
+import java.time.LocalDateTime
 
 import static io.dropwizard.testing.FixtureHelpers.fixture
 /**
@@ -73,17 +72,17 @@ class WailSpec extends Specification {
             ""          | "JohnDoe" || 3
     }
 
-    @Ignore
-    def "json serialization works"(){
+    def "json serialization and deserialization works"(){
         given:
-            def final mapper = new ObjectMapper(new JsonFactory());
+            def final mapper = new ObjectMapper(new JsonFactory())
             wail = new Wail()
-            wail.getDate() >> LocalDate.of(2014, 01, 04)
+            //wail.getDate() >> LocalDate.of(2014, 01, 04)
             wail.setMessage("I farted in the elevator today")
             wail.setPseudonym("Jane")
-            wail.setDate(LocalDate.of(2014, 01, 04))
+            wail.setDate(LocalDateTime.of(2014, 01, 04, 4,55))
         expect:
-            mapper.writeValueAsString(wail) == fixture("fixtures/wail.json")
+            def expected = mapper.readValue(fixture("fixtures/wail.json"), Wail.class)
+            expected == wail
 
     }
 

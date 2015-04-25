@@ -18,6 +18,8 @@ CREATE TABLE wails(id SERIAL PRIMARY KEY NOT NULL,
 	upvotes int DEFAULT 0,
 	downvotes int DEFAULT 0);
 
+-- TODO Add ipaddress of type inet, to log wail ip. Add timed hash to disallow a certain amount of posts.
+
 /*CREATE TABLE wails(id INT PRIMARY KEY NOT NULL,
 			wail_id INT REFERENCES wail(id));*/
 
@@ -25,7 +27,7 @@ CREATE TABLE wails(id SERIAL PRIMARY KEY NOT NULL,
 create table users(id SERIAL primary key not null,
 	username varchar(125) not null,
 	password char(60) not null,
-	role char(25)
+	role char(25),
 	);
 
 alter table users

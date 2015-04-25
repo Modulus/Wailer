@@ -2,11 +2,14 @@ package com.subblesnask.types;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -41,6 +44,8 @@ public class Wail {
     private int downVotes;
 
     @JsonProperty("timestamp")
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     public LocalDateTime getDate() {
         return date;
     }
@@ -111,5 +116,33 @@ public class Wail {
 
     public void increateDownVotes(){
         this.downVotes += 1;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Wail)) return false;
+
+        Wail wail = (Wail) o;
+
+        if (upVotes != wail.upVotes) return false;
+        if (downVotes != wail.downVotes) return false;
+        if (id != null ? !id.equals(wail.id) : wail.id != null) return false;
+        if (pseudonym != null ? !pseudonym.equals(wail.pseudonym) : wail.pseudonym != null) return false;
+        if (date != null ? !date.equals(wail.date) : wail.date != null) return false;
+        return !(message != null ? !message.equals(wail.message) : wail.message != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (pseudonym != null ? pseudonym.hashCode() : 0);
+        result = 31 * result + (date != null ? date.hashCode() : 0);
+        result = 31 * result + (message != null ? message.hashCode() : 0);
+        result = 31 * result + upVotes;
+        result = 31 * result + downVotes;
+        return result;
     }
 }

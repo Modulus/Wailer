@@ -8,6 +8,7 @@
         <dropwizard.version>0.8.0</dropwizard.version>
         <spock.version>1.0-groovy-2.4</spock.version>
         <jdbi.version>2.59</jdbi.version>
+        <jackson.version>2.5.2</jackson.version>
 
     </properties>
     <modelVersion>4.0.0</modelVersion>
@@ -103,6 +104,13 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!--For serializing localdate-->
+        <!--http://andreitsibets.blogspot.nl/2014/04/java8-localdate-jackson-json.html-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
 
 
     </dependencies>
