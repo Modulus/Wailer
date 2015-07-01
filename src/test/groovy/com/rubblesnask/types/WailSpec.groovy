@@ -1,3 +1,5 @@
+package groovy.com.rubblesnask.types
+
 import com.fasterxml.jackson.core.JsonFactory
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.subblesnask.types.Wail
