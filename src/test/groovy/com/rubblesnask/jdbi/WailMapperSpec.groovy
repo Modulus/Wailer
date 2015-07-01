@@ -22,18 +22,19 @@ class WailMapperSpec extends Specification{
 
 
     def "Maps to expected Wail"(){
-        wail = new Wail()
-        mapper = new WailMapper()
-        resultSet = Mock(ResultSet)
+        setup:
+            wail = new Wail()
+            mapper = new WailMapper()
+            resultSet = Mock(ResultSet)
 
-        wail.setId(10)
-        wail.setMessage("Hallo alle ihopa")
-        wail.setPseudonym("Raglafanten")
+            wail.setId(10)
+            wail.setMessage("Hallo alle ihopa")
+            wail.setPseudonym("Raglafanten")
 
-        timestamp = new Timestamp(System.currentTimeMillis());
-        wail.setDate(timestamp.toLocalDateTime())
-        wail.setDownVotes(2)
-        wail.setUpVotes(5)
+            timestamp = new Timestamp(System.currentTimeMillis());
+            wail.setDate(timestamp.toLocalDateTime())
+            wail.setDownVotes(2)
+            wail.setUpVotes(5)
 
         when:
             resultSet.getInt("id") >> wail.getId()
