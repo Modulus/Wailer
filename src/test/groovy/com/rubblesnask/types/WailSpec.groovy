@@ -30,9 +30,9 @@ class WailSpec extends Specification {
 
     def "empty message gives three violations"(){
         when:
-        wail.setMessage("")
+            wail.setMessage("")
         then:
-        def violations = validator.validate(wail)
+            def violations = validator.validate(wail)
         violations.size() == 3
     }
 
