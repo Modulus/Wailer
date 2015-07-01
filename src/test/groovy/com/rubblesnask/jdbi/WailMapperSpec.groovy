@@ -17,6 +17,7 @@ class WailMapperSpec extends Specification{
     def resultSet
     def wail
     def mapper
+    def timestamp
 
 
 
@@ -28,7 +29,9 @@ class WailMapperSpec extends Specification{
         wail.setId(10)
         wail.setMessage("Hallo alle ihopa")
         wail.setPseudonym("Raglafanten")
-        wail.setDate(LocalDateTime.now(ZoneId.of("Z")))
+
+        timestamp = new Timestamp(System.currentTimeMillis());
+        wail.setDate(timestamp.toLocalDateTime())
         wail.setDownVotes(2)
         wail.setUpVotes(5)
 
@@ -38,9 +41,8 @@ class WailMapperSpec extends Specification{
             resultSet.getString("name") >> wail.getPseudonym()
             resultSet.getInt("upvotes") >> wail.getUpVotes()
             resultSet.getInt("downvotes") >> wail.getDownVotes()
-            def millis = wail.getDate().toEpochSecond(ZoneOffset.UTC)
-            def timeStamp = new Timestamp(millis)
-            resultSet.getTimestamp("timestamp") >> timeStamp
+
+            resultSet.getTimestamp("timestamp") >> timestamp
         then:
             def result = mapper.map(0, resultSet, null )
             result.getId() == wail.getId()
@@ -48,7 +50,7 @@ class WailMapperSpec extends Specification{
             result.getPseudonym() == wail.getPseudonym()
             result.getUpVotes() == wail.getUpVotes()
             result.getDownVotes() == wail.getDownVotes()
-            //result.getDate() == wail.getDate()
+            result.getDate() == wail.getDate()
 
 
 
