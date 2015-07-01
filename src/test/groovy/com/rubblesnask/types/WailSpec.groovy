@@ -2,7 +2,7 @@ package groovy.com.rubblesnask.types
 
 import com.fasterxml.jackson.core.JsonFactory
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.subblesnask.types.Wail
+import com.rubblesnask.types.Wail
 import spock.lang.Specification
 
 import javax.validation.Validation

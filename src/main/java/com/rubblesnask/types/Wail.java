@@ -1,4 +1,4 @@
-package com.subblesnask.types;
+package com.rubblesnask.types;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;

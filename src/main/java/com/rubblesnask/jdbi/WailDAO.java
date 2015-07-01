@@ -1,11 +1,10 @@
 package com.rubblesnask.jdbi;
 
-import com.subblesnask.types.Wail;
+import com.rubblesnask.types.Wail;
 import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.Mapper;
-import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 
 import java.sql.Timestamp;
 import java.util.Iterator;

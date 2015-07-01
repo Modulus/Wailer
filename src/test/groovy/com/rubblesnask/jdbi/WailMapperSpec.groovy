@@ -1,7 +1,7 @@
 package groovy.com.rubblesnask.jdbi
 
 import com.rubblesnask.jdbi.WailMapper
-import com.subblesnask.types.Wail
+import com.rubblesnask.types.Wail
 import spock.lang.Specification
 
 import java.sql.ResultSet
